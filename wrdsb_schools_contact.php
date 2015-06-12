@@ -146,7 +146,7 @@ function build_school_info_table($post_data)
 	}
 	else
 	{
-		echo 'We cannot find the matching school information in our database. Please put in a ticket through <a href="https://itservicedesk.wrdsb.ca/" target="_blank">ITService Desk</a> for assistance.';
+		echo 'We cannot find the matching school information in our database. Please put in a ticket through <a href="https://itservicedesk.wrdsb.ca/ITServiceDesk.WebAccess/ss/object/create.rails?class_name=IncidentManagement.Incident&amp;lifecycle_name=NewProcess21&amp;object_template_name=NewTemplate28" target="_blank" title="WordPress Support">ITService Desk</a> for assistance.';
 	}
 }
 
