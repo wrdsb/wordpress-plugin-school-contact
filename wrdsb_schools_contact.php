@@ -157,55 +157,72 @@ function wrdsb_school_info_display()
 
 	$list = $wpdb->get_results( "SELECT * FROM schools_schools where field_school_code_value LIKE '$school_code'" );
 	
-	// cannot be null
-	$name         = $list[0]->field_school_name;
-	$street       = $list[0]->field_school_street_value;
-	$city         = $list[0]->field_school_city_value;
-	$postalcode   = $list[0]->field_school_postalcode_value;
-	$phone        = $list[0]->field_school_phone_value;
-	$school_hours = $list[0]->field_school_hours_value; 
-
-	// may be null (Language Schools and Exemplars)
-	$fax          = $list[0]->field_school_fax_value;
-	$attendance   = $list[0]->field_school_attendance_line_value;
-	$office_hours = $list[0]->field_school_office_hours_value;
-	$breaks       = $list[0]->field_school_break_times_value;
-
-	// School Name and Map
-	echo '<h1>'.$name.'</h1>';
-
-	// School Address
-	echo '<address>'.$street.'<br />'.$city.', ON '.$postalcode.' <a target="_blank" href="http://maps.google.com/maps?f=q&hl=en&q='.$street.'+'.$city.'+Ontario">(Map)</a></address>';
-
-	// School Phone and Fax Information
-	echo '<address>Phone: '.$phone;
-
-	if ($fax != '') 
-	{
-		echo '<br />
-		Fax: '.$fax;
+	if ($list === '') {
+		// if null (not a school in the list), display
+echo<<<END
+<h1>Waterloo Region District School Board</h1>
+<address>51 Ardelt Avenue<br />
+Kitchener, ON N2C 2R5<br />
+</address>
+<address>
+Switchboard: 519-570-0003<br />
+<a href="http://www.wrdsb.ca/about-the-wrdsb/contact/">Contact Information</a><br />
+<a href="http://www.wrdsb.ca/about-the-wrdsb/contact/website-feedback/">Website Feedback Form</a>
+</address>
+END;
 	}
-
-	if ($attendance != '')
+	else
 	{
-		echo '<br />
-		Attendance: '.$attendance;
+		// cannot be null
+		$name         = $list[0]->field_school_name;
+		$street       = $list[0]->field_school_street_value;
+		$city         = $list[0]->field_school_city_value;
+		$postalcode   = $list[0]->field_school_postalcode_value;
+		$phone        = $list[0]->field_school_phone_value;
+		$school_hours = $list[0]->field_school_hours_value; 
+	
+		// may be null (Language Schools and Exemplars)
+		$fax          = $list[0]->field_school_fax_value;
+		$attendance   = $list[0]->field_school_attendance_line_value;
+		$office_hours = $list[0]->field_school_office_hours_value;
+		$breaks       = $list[0]->field_school_break_times_value;
+	
+		// School Name and Map
+		echo '<h1>'.$name.'</h1>';
+	
+		// School Address
+		echo '<address>'.$street.'<br />'.$city.', ON '.$postalcode.' <a target="_blank" href="http://maps.google.com/maps?f=q&hl=en&q='.$street.'+'.$city.'+Ontario">(Map)</a></address>';
+	
+		// School Phone and Fax Information
+		echo '<address>Phone: '.$phone;
+	
+		if ($fax != '') 
+		{
+			echo '<br />
+			Fax: '.$fax;
+		}
+	
+		if ($attendance != '')
+		{
+			echo '<br />
+			Attendance: '.$attendance;
+		}
+	
+		// School Hours
+		echo '<br /><br />School Hours: '.$school_hours;
+	
+		if ($office_hours != '') 
+		{
+			echo '<br />
+			Office Hours: '.$office_hours;
+		}
+	
+		if ($breaks != '')
+		{
+			echo '<br />
+			Break Times: '.$breaks;
+		}
+	
+		echo '</address>';
 	}
-
-	// School Hours
-	echo '<br /><br />School Hours: '.$school_hours;
-
-	if ($office_hours != '') 
-	{
-		echo '<br />
-		Office Hours: '.$office_hours;
-	}
-
-	if ($breaks != '')
-	{
-		echo '<br />
-		Break Times: '.$breaks;
-	}
-
-	echo '</address>';
 }
