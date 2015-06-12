@@ -71,9 +71,7 @@ function manage_school_information()
 	<div class="wrap">
 	<h2>School Information Manager</h2>
 	<p>This information is displayed in the footer of every page of your school website.</p>
-	<form id="form1" name="form1" method="post" action="">
 	<?php build_school_info_table($_POST); ?>
-	</form>
 	</div>
 	<?php
 }
@@ -116,6 +114,7 @@ function build_school_info_table($post_data)
 	
 	$list = $wpdb->get_results( "SELECT * FROM schools_schools where field_school_code_value LIKE '$school_code'" );
 ?>
+	<form id="form1" name="form1" method="post" action="">
 	<table>
 <?php
 	if (count($list) > 0)
@@ -141,6 +140,7 @@ function build_school_info_table($post_data)
 		?>
 		</table>
 		<input type="submit" value="Update your School Information">
+	</form>
 
 	<?php
 	}
