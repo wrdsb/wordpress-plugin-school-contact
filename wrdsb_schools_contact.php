@@ -73,7 +73,6 @@ function manage_school_information()
 	<p>This information is displayed in the footer of every page of your school website.</p>
 	<form id="form1" name="form1" method="post" action="">
 	<?php build_school_info_table($_POST); ?>
-	<input type="submit" value="Update your School Information">
 	</form>
 	</div>
 	<?php
@@ -141,6 +140,8 @@ function build_school_info_table($post_data)
 		}
 		?>
 		</table>
+		<input type="submit" value="Update your School Information">
+
 	<?php
 	}
 	else
@@ -157,8 +158,8 @@ function wrdsb_school_info_display()
 
 	$list = $wpdb->get_results( "SELECT * FROM schools_schools where field_school_code_value LIKE '$school_code'" );
 	
-	if ($list === '') {
-		// if null (not a school in the list), display
+	if (is_null($list[0])) {
+	// if null (not a school in the list), display
 echo<<<END
 <h1>Waterloo Region District School Board</h1>
 <address>51 Ardelt Avenue<br />
