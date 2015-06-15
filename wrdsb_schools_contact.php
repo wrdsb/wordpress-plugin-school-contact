@@ -66,7 +66,6 @@ function wrdsb_school_info_manager()
 
 function manage_school_information() 
 {
-	$school_code = get_school_code();
 	?>
 	<div class="wrap">
 	<h2>School Information Manager</h2>
@@ -80,7 +79,6 @@ function build_school_info_table($post_data)
 {
 	global $wpdb;
 	$school_code = get_school_code();
-
 	$commit = array();
 	if (isset($post_data))
 		{
@@ -225,5 +223,6 @@ END;
 		}
 	
 		echo '</address>';
+		echo '<p><a href="http://www.wrdsb.ca/about-the-wrdsb/contact/website-feedback/">Website Feedback Form</a></p>';
 	}
 }
