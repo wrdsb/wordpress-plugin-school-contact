@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: WRDSB School Contact Information
- * Plugin URI: https://github.com/wrdsb/wordpress-school-contact/
+ * Plugin URI: https://github.com/wrdsb/wordpress-plugin-school-contact/
  * Description: Manage your School Information!
- * Version: 0.4
- * Author: Suzanne Carter, Michael Denny
- * Last Updated: 2015-06-05
+ * Version: 0.1
+ * Author: Suzanne Carter
+ * Last Updated: 2015-06-15
  */
 
 // Get the school code
