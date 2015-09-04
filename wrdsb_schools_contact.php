@@ -210,7 +210,7 @@ END;
 		// School Email Address
 		
 		echo '<br />';
-		echo '<a href="mailto:'.$email.'">Email: '.$email.'</a>';
+		echo 'Email: <a href="mailto:'.$email.'">'.$email.'</a>';
 
 		echo '</p>';
 
