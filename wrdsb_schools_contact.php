@@ -3,7 +3,7 @@
  * Plugin Name: WRDSB School Contact Information
  * Plugin URI: https://github.com/wrdsb/wordpress-school-contact/
  * Description: Manage your School Information!
- * Version: 0.4.2
+ * Version: 0.5.0
  * Author: Suzanne Carter
  */
 
