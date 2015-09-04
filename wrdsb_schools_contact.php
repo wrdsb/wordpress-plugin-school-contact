@@ -3,7 +3,7 @@
  * Plugin Name: WRDSB School Contact Information
  * Plugin URI: https://github.com/wrdsb/wordpress-school-contact/
  * Description: Manage your School Information!
- * Version: 0.4.1
+ * Version: 0.4.2
  * Author: Suzanne Carter
  */
 
@@ -165,6 +165,9 @@ function wrdsb_school_info_display()
 	$attendance   = $list[0]->field_school_attendance_line_value;
 	$office_hours = $list[0]->field_school_office_hours_value;
 	$breaks       = $list[0]->field_school_break_times_value;
+	
+	// generated
+	$email        = $school_code.'@wrdsb.on.ca';
 
 	if (is_null($list[0])) 
 	{
@@ -204,6 +207,11 @@ END;
 			Attendance: '.$attendance;
 		}
 
+		// School Email Address
+		
+		echo '<br />
+		echo '<a href="mailto:'.'$email.'">Email: '.$email.'</a>';
+
 		echo '</p>';
 
 		// School Hours
@@ -220,7 +228,7 @@ END;
 			echo '<br />
 			Break Times: '.$breaks;
 		}
-
+		
 		echo '</p></address>';
 		echo '<p><a href="http://www.wrdsb.ca/about-the-wrdsb/contact/website-feedback/">Website Feedback Form</a></p>';
 	}
