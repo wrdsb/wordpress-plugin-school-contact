@@ -212,8 +212,8 @@ END;
 		// School Email Address
 		
 		echo '<br />';
+		echo '<a href="/about/staff-list/">Staff Contact Information</a>';
 		echo 'Email: <a href="mailto:'.$email.'">'.$email.'</a>';
-
 		echo '</p>';
 
 		// School Hours
