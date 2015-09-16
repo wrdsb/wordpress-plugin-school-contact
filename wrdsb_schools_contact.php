@@ -182,8 +182,9 @@ echo<<<END
 	Kitchener, ON N2C 2R5</p>
 
 	<p>Switchboard: 519-570-0003<br />
-	<a href="http://www.wrdsb.ca/about-the-wrdsb/contact/">Contact the WRDSB</a><br />
-	<a href="http://www.wrdsb.ca/about-the-wrdsb/contact/website-feedback/">Website Feedback Form</a></p>
+	<a href="http://www.wrdsb.ca/about-the-wrdsb/contact/">Contact the WRDSB</a></p>
+	
+	<p><a href="http://www.wrdsb.ca/about-the-wrdsb/contact/website-feedback/">Website Feedback Form</a></p>
 	</address>
 END;
 	}
