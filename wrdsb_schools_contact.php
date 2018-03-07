@@ -76,7 +76,7 @@ function get_school_code()
 			break;
 	}
 
-	return $school_code;
+	return 'abc';
 }
 
 function build_school_info_table($post_data)
@@ -121,7 +121,7 @@ function build_school_info_table($post_data)
 	?>
 	<form id="form1" name="form1" method="post" action="">
 	<table>
-    <?php
+		<?php
 	if (count($list) > 0)
 	{
 		foreach ($list['0'] as $key=>$l)
@@ -132,17 +132,17 @@ function build_school_info_table($post_data)
 			}
 			if ($key == 'field_school_name' OR $key == 'field_school_type_value' OR $key == 'field_school_website_value' OR $key == 'field_school_code_value')
 			{
-				$edit = 'readonly="readonly"';	
+				$edit = 'readonly="readonly"';
 			}
 			if($key == 'display_attendance_email' OR $key == 'display_general_email')
 			{
 				echo '<tr><td><label for="'.$key.'"><strong>'.$titles[$key].'</strong></label></td>';
-				echo '<td><input type="checkbox" name="'.$key.'" id="'.$key.'" value="'.$l.'"'.$edit.(($1 == '1')?'checked="checked"')'/></td></tr>';	
+				echo '<td><input type="checkbox" name="'.$key.'" id="'.$key.'" value="'.$l.'"'.$edit.'/></td></tr>';
 			}
 			else
 			{
 				echo '<tr><td><label for="'.$key.'"><strong>'.$titles[$key].'</strong></label></td>';
-				echo '<td><input type="text" size="60" name="'.$key.'" id="'.$key.'" value="'.$l.'"'.$edit.'/></td></tr>';	
+				echo '<td><input type="text" size="60" name="'.$key.'" id="'.$key.'" value="'.$l.'"'.$edit.'/></td></tr>';
 			}
 			$edit = "";
 		}
@@ -225,12 +225,12 @@ END;
 		// School Attendance Email Address
 		if($web_attendance_email)
 		{
-			echo '<br />Attendance Email: ' $school_code . '-attendance@wrdsb.ca';
+			echo '<br />Attendance Email: ' . $school_code . '-attendance@wrdsb.ca';
 		}
 		// General Questions Email
 		if($general_email)
 		{
-			echo '<br />General Questions: ' + $school_code . '@wrdsb.ca';
+			echo '<br />General Questions: ' . $school_code . '@wrdsb.ca';
 		}
 
 		echo '<br /><a href="/about/staff-list/">Staff Contact Information</a>';
