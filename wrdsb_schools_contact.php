@@ -3,8 +3,8 @@
  * Plugin Name: WRDSB School Contact Information
  * Plugin URI: https://github.com/wrdsb/wordpress-plugin-school-contact/
  * Description: Manage your School Information!
- * Version: 0.5.3
- * Author: Suzanne Carter
+ * Version: 0.6.0
+ * Author: Dorian Twardus
  * GitHub Plugin URI: wrdsb/wordpress-plugin-school-contact
  * GitHub Branch: master
  */
@@ -112,7 +112,9 @@ function build_school_info_table($post_data)
 		'field_school_municipality_value'=>'Municipality',
 		'field_school_messagebox_value'=>'field_school_messagebox_value',
 		'field_school_break_times_value'=>'Break Times',
-		'field_school_code_value'=>'School Code'
+		'field_school_code_value'=>'School Code',
+		'display_attendance_email'=>'Display Attendance Email',
+		'display_general_email'=>'Display General Email'
 		);
 	
 	$list = $wpdb->get_results( "SELECT * FROM schools_schools where field_school_code_value LIKE '$school_code'" );
@@ -132,8 +134,16 @@ function build_school_info_table($post_data)
 			{
 				$edit = 'readonly="readonly"';	
 			}
-			echo '<tr><td><label for="'.$key.'"><strong>'.$titles[$key].'</strong></label></td>';
-			echo '<td><input type="text" size="60" name="'.$key.'" id="'.$key.'" value="'.$l.'"'.$edit.'/></td></tr>';	
+			if($key == 'display_attendance_email' OR $key == 'display_general_email')
+			{
+				echo '<tr><td><label for="'.$key.'"><strong>'.$titles[$key].'</strong></label></td>';
+				echo '<td><input type="checkbox" name="'.$key.'" id="'.$key.'" value="'.$l.'"'.$edit.(($1 == '1')?'checked="checked"')'/></td></tr>';	
+			}
+			else
+			{
+				echo '<tr><td><label for="'.$key.'"><strong>'.$titles[$key].'</strong></label></td>';
+				echo '<td><input type="text" size="60" name="'.$key.'" id="'.$key.'" value="'.$l.'"'.$edit.'/></td></tr>';	
+			}
 			$edit = "";
 		}
 		?>
@@ -167,9 +177,11 @@ function wrdsb_school_info_display()
 	$attendance   = $list[0]->field_school_attendance_line_value;
 	$office_hours = $list[0]->field_school_office_hours_value;
 	$breaks       = $list[0]->field_school_break_times_value;
+	$web_attendance_email = $list[0]->display_attendance_email;
+	$general_email = $list[0]->display_general_email;
 	
 	// generated
-	$email        = $school_code.'@wrdsb.on.ca';
+	$email        = $school_code.'@wrdsb.ca';
 
 	if (is_null($list[0])) 
 	{
@@ -207,11 +219,20 @@ END;
 		if ($attendance != '')
 		{
 			echo '<br />
-			Attendance: '.$attendance;
+			Attendance Phone: '.$attendance;
 		}
 
-		// School Email Address
-		
+		// School Attendance Email Address
+		if($web_attendance_email)
+		{
+			echo '<br />Attendance Email: ' $school_code . '-attendance@wrdsb.ca';
+		}
+		// General Questions Email
+		if($general_email)
+		{
+			echo '<br />General Questions: ' + $school_code . '@wrdsb.ca';
+		}
+
 		echo '<br /><a href="/about/staff-list/">Staff Contact Information</a>';
 		// echo '<br />Email: <a href="mailto:'.$email.'">'.$email.'</a>';
 		echo '</p>';
