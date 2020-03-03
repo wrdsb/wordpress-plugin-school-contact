@@ -168,7 +168,8 @@ function wrdsb_school_info_display()
 
 	// may be null (Language Schools and Exemplars)
 	$fax          = $list[0]->field_school_fax_value;
-	$attendance   = $list[0]->field_school_attendance_line_value;
+	$attendance   = $phone . ', press 1';
+	//$list[0]->field_school_attendance_line_value;
 	$office_hours = $list[0]->field_school_office_hours_value;
 	$breaks       = $list[0]->field_school_break_times_value;
 	
