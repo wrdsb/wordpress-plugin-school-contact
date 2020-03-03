@@ -47,6 +47,10 @@ function get_school_code()
 
 	switch ($extended_school_code)
 	{
+		case 'wplabs':
+			$school_code = 'xxx';
+			break;
+
 		case 'chinese':
 			$school_code = 'chi';
 			break;
@@ -169,7 +173,8 @@ function wrdsb_school_info_display()
 	$breaks       = $list[0]->field_school_break_times_value;
 	
 	// generated
-	$email        = $school_code.'@wrdsb.on.ca';
+	$email        			= $school_code.'@wrdsb.ca';
+	$attendance_email       = $school_code.'-attendance@wrdsb.ca';
 
 	if (is_null($list[0])) 
 	{
@@ -204,11 +209,15 @@ END;
 			Fax: '.$fax;
 		}
 
-		if ($attendance != '')
-		{
-			echo '<br />
-			Attendance: '.$attendance;
+		// Attendance information
+
+		echo '<br />Attendance:';
+		if ($attendance != '') {
+			// School Attedance Phone
+			echo '<br />&nbsp; &bull; '.$attendance;
 		}
+		// School Attendance Email Address
+		echo '<br />&nbsp; &bull; <a href="mailto:'.$attendance_email.'">email attendance</a>';
 
 		// School Email Address
 		
