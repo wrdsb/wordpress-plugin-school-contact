@@ -1,3 +1,8 @@
+#### 0.7.0
+
++ general email
++ press 3 instruction on main phone
+
 #### 0.6.0
 
 + added Attendance email 
