@@ -163,7 +163,7 @@ function wrdsb_school_info_display()
 	$street       = $list[0]->field_school_street_value;
 	$city         = $list[0]->field_school_city_value;
 	$postalcode   = $list[0]->field_school_postalcode_value;
-	$phone        = $list[0]->field_school_phone_value . ', press 3';
+	$phone        = $list[0]->field_school_phone_value ;
 	$school_hours = $list[0]->field_school_hours_value; 
 
 	// may be null (Language Schools and Exemplars)
@@ -203,13 +203,13 @@ END;
 		echo '<address><p>'.$street.'<br />'.$city.', ON '.$postalcode.' <a target="_blank" href="http://maps.google.com/maps?f=q&hl=en&q='.$street.'+'.$city.'+Ontario">(Map)</a></p>';
 
 		// School Phone and Fax and General Inbox Information
-		echo '<p>Phone: '.$phone;
+		echo '<p>Phone: '.$phone. ', press 3';
 		if ($fax != '')
 		{
 			echo '<br />
 			Fax: '.$fax;
 		}
-		echo 'General email: <a href="mailto:'.$email.'">'.$email.'</a>';
+		echo '<br />General email: <a href="mailto:'.$email.'">'.$email.'</a>';
 
 		// Attendance information
 
