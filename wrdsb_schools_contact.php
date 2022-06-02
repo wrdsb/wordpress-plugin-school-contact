@@ -204,7 +204,7 @@ END;
             Fax: '.$fax;
         }
 
-        if ($school_code !== 'ERL') {
+        if ($school_code !== 'erl') {
             echo '<br />General email: <a href="mailto:'.$email.'">'.$email.'</a>';
         }
 
@@ -215,7 +215,7 @@ END;
             echo '<br />&nbsp; &bull; '.$attendance;
         }
 
-        if ($school_code !== 'ERL') {
+        if ($school_code !== 'erl') {
             // School Attendance Email Address
             echo '<br />&nbsp; &bull; <a href="mailto:'.$attendance_email.'">email attendance</a>';
         }
